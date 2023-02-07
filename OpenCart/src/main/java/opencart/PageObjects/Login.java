@@ -48,6 +48,12 @@ public class Login extends BaseTest {
 			 return new demo(driver);
 			 
 		 }
+		 
+		 public void goTo() {
+			 
+			 driver.get("https://www.opencart.com/index.php?route=account/login");
+			 driver.manage().window().maximize();
+		 }
 		
 		
 		 

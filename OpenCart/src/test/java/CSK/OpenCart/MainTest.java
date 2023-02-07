@@ -1,5 +1,6 @@
 package CSK.OpenCart;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
@@ -12,18 +13,16 @@ import opencart.PageObjects.Login;
 import opencart.PageObjects.demo;
 import opencart.PageObjects.product;
 
-public class MainTest { 
+public class MainTest extends StartTest { 
 	
 	@Test
-	public void Test() throws InterruptedException {
+	public void Test() throws InterruptedException, IOException {
+		Login login =  landapp();
 		
-		 WebDriverManager.chromedriver().setup();
-		 WebDriver driver = new ChromeDriver();
-		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-		 driver.get("https://www.opencart.com/index.php?route=account/login");
+		/* driver.get("https://www.opencart.com/index.php?route=account/login");
 		 driver.manage().window().maximize();
 		
-		 Login login = new Login(driver);
+		 Login login = new Login(driver);*/
 		 login.login("cs29996@gmail.com", "Cs29996@");
 		 demo demo=login.pin("3109");
 		product product = demo.clickDemo(); 

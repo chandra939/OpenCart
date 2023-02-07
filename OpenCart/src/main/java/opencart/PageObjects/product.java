@@ -26,14 +26,25 @@ public class product extends BaseTest {
 	WebElement Click;
 	@FindBy(id="button-cart")
 	WebElement cart;
+	By secondClick = By.id("button-cart");
 	@FindBy(css=".alert.alert-success.alert-dismissible")
 	WebElement alert;
+	By nameWait = By.cssSelector(".img-fluid");
 	
 	public Boolean products() throws InterruptedException {
+		waitForElementToVisible(nameWait);
 		js();
 		Thread.sleep(3000);
+		actions(Click);
+				
 		waitForElementToVisible(by);
+		
 		Click.click();
+		
+		js();
+		Thread.sleep(3000);
+		waitForElementToClickable(secondClick);
+		
 		cart.click();
 		waitForElementToVisible(w);
 		Boolean bool =alert.isDisplayed();
