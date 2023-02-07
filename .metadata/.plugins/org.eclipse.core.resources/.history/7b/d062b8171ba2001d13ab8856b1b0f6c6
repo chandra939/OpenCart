@@ -1,0 +1,11 @@
+package CSK.OpenCart;
+
+public class Register {
+	
+	public void register() {
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,5 @@
+package opencart.PageObjects;
+
+public class Register {
+
+}

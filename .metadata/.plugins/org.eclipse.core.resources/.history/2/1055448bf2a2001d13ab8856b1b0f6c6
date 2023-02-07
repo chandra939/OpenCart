@@ -1,0 +1,37 @@
+package opencart.PageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import base.Abstraction.BaseTest;
+
+public class product extends BaseTest {
+	
+	WebDriver driver;
+
+	public product(WebDriver driver) {
+		super(driver);
+		this.driver=driver;
+	}
+
+	
+	
+	By by = By.xpath("(//h4)[1]");
+	@FindBy(xpath="(//h4)[1]/a")
+	WebElement click;
+	@FindBy(id="button-cart")
+	WebElement cart;
+	
+	public void products() {
+		js();
+		waitForElementToVisible(by);
+		click.click();
+		cart.click();
+		
+	}
+	
+	
+
+}

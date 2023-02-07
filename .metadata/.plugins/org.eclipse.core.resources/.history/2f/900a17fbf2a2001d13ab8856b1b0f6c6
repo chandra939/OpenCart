@@ -1,0 +1,71 @@
+package CSK.OpenCart;
+
+import static org.testng.Assert.assertEquals;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.idealized.Javascript;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import dev.failsafe.internal.util.Assert;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import opencart.PageObjects.Login;
+import opencart.PageObjects.demo;
+import opencart.PageObjects.product;
+
+public class MainTest {
+	
+	@Test
+	public void Test() throws InterruptedException {
+		
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		 driver.get("https://www.opencart.com/index.php?route=account/login");
+		 driver.manage().window().maximize();
+		
+		 Login login = new Login(driver);
+		 login.login("cs29996@gmail.com", "Cs29996@");
+		 demo demo=login.pin("3109");
+		product product = demo.clickDemo();
+		Boolean bool =product.products();
+		 
+		 
+		/*Set<String> tab = driver.getWindowHandles();
+		Iterator<String> it = tab.iterator();
+		String parent = it.next();
+		String child = it.next();
+		driver.switchTo().window(child);
+		
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("window.scrollBy(0,500)");
+		Thread.sleep(3000);
+		WebDriverWait w = new WebDriverWait(driver, Duration.ofSeconds(10));	
+		w.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//h4)[1]")));*/
+		
+		SoftAssert a = new SoftAssert();
+		a.assertEquals(bool, true);
+		Thread.sleep(1000);
+		driver.navigate().back();
+		driver.switchTo().window(parent);
+		driver.getTitle();
+		driver.quit();
+		
+		
+		
+		 
+		 
+		 
+	}
+
+}

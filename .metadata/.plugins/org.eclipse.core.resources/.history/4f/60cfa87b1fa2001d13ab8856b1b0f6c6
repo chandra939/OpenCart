@@ -1,0 +1,35 @@
+package CSK.OpenCart;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import opencart.PageObjects.Register;
+
+public class MainTest {
+	
+	@Test
+	public void Test() {
+		
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		 driver.get("https://www.opencart.com/");
+		 driver.manage().window().maximize();
+		 driver.findElement(By.xpath("//div/a[2]")).click();
+		 Register reg = new Register(driver);
+		 driver.findElement(By.name("username")).sendKeys("chandra");
+		 driver.findElement(By.name("country_id")).click();
+		 WebElement element = driver.findElement(By.name("country_id"));
+		 Select dd = new Select(element);
+		 dd.selectByVisibleText("India");
+		 
+		 
+	}
+
+}

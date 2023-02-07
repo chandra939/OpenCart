@@ -1,0 +1,20 @@
+package opencart.PageObjects;
+
+import org.openqa.selenium.WebDriver;
+
+import base.Abstraction.BaseTest;
+
+public class product extends BaseTest {
+	
+	WebDriver driver;
+
+	public product(WebDriver driver) {
+		super(driver);
+		this.driver=driver;
+	}
+
+	
+	
+	
+
+}

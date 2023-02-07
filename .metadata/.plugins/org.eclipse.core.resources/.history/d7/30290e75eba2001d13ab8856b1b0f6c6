@@ -1,0 +1,30 @@
+package opencart.PageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class demo {
+	
+	WebDriver driver;
+	
+	public demo(WebDriver driver){
+		 this.driver = driver;
+		 PageFactory.initElements(driver, this);
+		
+	}
+
+	@FindBy(linkText="Demo")
+	WebElement demo;
+	@FindBy(css=".box-overlay")
+	WebElement click;
+	
+	public void clickDemo() {
+		demo.click();
+		click.click();
+	}
+	
+//	driver.findElement(By.linkText("Demo")).click();
+	// driver.findElement(By.cssSelector(".box-overlay")).click();
+}

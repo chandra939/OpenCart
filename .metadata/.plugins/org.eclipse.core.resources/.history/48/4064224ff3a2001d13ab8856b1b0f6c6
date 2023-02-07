@@ -1,0 +1,42 @@
+package opencart.PageObjects;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import base.Abstraction.BaseTest;
+
+public class product extends BaseTest {
+	
+	WebDriver driver;
+
+	public product(WebDriver driver) {
+		super(driver);
+		this.driver=driver;
+	}
+
+	
+	
+	By by = By.xpath("(//h4)[1]");
+	By w = By.cssSelector(".alert.alert-success.alert-dismissible");
+	@FindBy(xpath="(//h4)[1]/a")
+	WebElement click;
+	@FindBy(id="button-cart")
+	WebElement cart;
+	@FindBy(css=".alert.alert-success.alert-dismissible")
+	WebElement alert;
+	
+	public Boolean products() {
+		js();
+		waitForElementToVisible(by);
+		click.click();
+		cart.click();
+		waitForElementToVisible(w);
+		Boolean bool =alert.isDisplayed();
+		return bool;
+	}
+	
+	
+
+}

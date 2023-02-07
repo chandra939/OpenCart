@@ -1,0 +1,32 @@
+package CSK.OpenCart;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import opencart.PageObjects.Login;
+
+public class MainTest {
+	
+	@Test
+	public void Test() throws InterruptedException {
+		
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		 driver.get("https://www.opencart.com/index.php?route=account/login");
+		 driver.manage().window().maximize();
+		
+		 Login login = new Login(driver);
+		 login.login("cs29996@gmail.com", "Cs29996@");
+		 login.pin("3109");
+		 
+		 
+		 
+		 
+	}
+
+}

@@ -1,0 +1,25 @@
+package base.Abstraction;
+
+import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BaseTest {
+	public BaseTest(WebDriver driver) {
+		// TODO Auto-generated constructor stub
+		this.driver = driver;
+		
+		
+	}
+	WebDriver driver;
+	
+	Set<String> tab = driver.getWindowHandles();
+	Iterator<String> it = tab.iterator();
+	String parent = it.next();
+	String child = it.next();
+	
+
+}

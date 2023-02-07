@@ -1,0 +1,45 @@
+package CSK.OpenCart;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import opencart.PageObjects.Login;
+import opencart.PageObjects.demo;
+import opencart.PageObjects.product;
+
+public class MainTest { 
+	
+	@Test
+	public void Test() throws InterruptedException {
+		
+		 WebDriverManager.chromedriver().setup();
+		 WebDriver driver = new ChromeDriver();
+		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		 driver.get("https://www.opencart.com/index.php?route=account/login");
+		 driver.manage().window().maximize();
+		
+		 Login login = new Login(driver);
+		 login.login("cs29996@gmail.com", "Cs29996@");
+		 demo demo=login.pin("3109");
+		product product = demo.clickDemo(); 
+		Boolean bool =product.products();
+	
+		SoftAssert a = new SoftAssert();
+		a.assertEquals(bool, true); 
+		Thread.sleep(1000);
+		driver.navigate().back();
+		driver.quit();
+		
+		
+		
+		 
+		 
+		 
+	}
+
+}
