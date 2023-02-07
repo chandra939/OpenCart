@@ -18,11 +18,6 @@ public class MainTest extends StartTest {
 	@Test
 	public void Test() throws InterruptedException, IOException {
 		Login login =  landapp();
-		
-		/* driver.get("https://www.opencart.com/index.php?route=account/login");
-		 driver.manage().window().maximize();
-		
-		 Login login = new Login(driver);*/
 		 login.login("cs29996@gmail.com", "Cs29996@");
 		 demo demo=login.pin("3109");
 		product product = demo.clickDemo(); 
